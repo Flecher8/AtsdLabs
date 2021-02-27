@@ -12,6 +12,11 @@ public:
     Node();
     Node(T d, Node* link = NULL);
 };
+template <typename T>
+Node<T>::Node()
+{
+    next = NULL;
+}
 
 int main()
 {
