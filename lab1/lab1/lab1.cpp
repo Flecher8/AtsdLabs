@@ -34,6 +34,7 @@ public:
     void addItem(T item);
     void printList();
     T deleteItem(T item);
+    bool search(T item);
 private:
     int count;
     Node<T>* first;
@@ -139,6 +140,21 @@ T SortedLinkedList<T>::deleteItem(T item)
         cout << "Item was not found and not deleted" << endl;
         return result;
     }
+}
+template <typename T>
+bool SortedLinkedList<T>::search(T item)
+{
+    Node<T>* following = first;
+    while (following != NULL)
+    {
+        if (following->data == item)
+            return true;
+        else if (following->data > item)
+            return false;
+
+        following = following->next;
+    }
+    return false;
 }
 int main()
 {
