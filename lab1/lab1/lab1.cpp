@@ -8,6 +8,8 @@ struct Node
 public:
     T data;
     Node* next;
+    // constructors
+    Node();
 };
 
 int main()
