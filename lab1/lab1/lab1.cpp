@@ -31,6 +31,7 @@ public:
     ~SortedLinkedList();// destructor
     bool isEmpty();
     int ListSize();
+    void addItem(T item);
 private:
     int count;
     Node<T>* first;
@@ -63,6 +64,21 @@ template <typename T>
 int SortedLinkedList<T>::ListSize()
 {
     return count;
+}
+template <typename T>
+void SortedLinkedList<T>::addItem(T item)
+{
+    Node<T>* previous = NULL,  *following = first;
+    while (following != NULL && following->data < item)
+    {
+        previous = following;
+        following = following->next;
+    }
+    if (previous == NULL)
+        first = new Node<T>(item, first);
+    else
+        previous->next = new Node<T>(item, following);
+    count++;
 }
 int main()
 {
