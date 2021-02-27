@@ -33,6 +33,7 @@ public:
     int ListSize();
     void addItem(T item);
     void printList();
+    T deleteItem(T item);
 private:
     int count;
     Node<T>* first;
@@ -94,6 +95,50 @@ void SortedLinkedList<T>::printList()
         following = following->next;
     }
     cout << endl;
+}
+template <typename T>
+T SortedLinkedList<T>::deleteItem(T item)
+{
+    T result;
+    if (isEmpty())
+    {
+        cout << "List underflow" << endl;
+        return result;
+    }
+    Node<T>* previous = NULL;
+    Node<T>* following = first;
+    while (following != NULL && following->data != item)
+    {
+        if (following->data > item)
+        {
+            cout << "Item was not found and not deleted" << endl;
+            return result;
+        }
+        previous = following;
+        following = following->next;
+    }
+
+    if (previous == NULL && following != NULL && following->data == item)
+    {
+        result = following->data;
+        first = first->next;
+        delete following;
+        count--;
+        return result;
+    }
+    else if (previous != NULL && following != NULL && following->data == item)
+    {
+        result = following->data;
+        previous->next = following->next;
+        delete following;
+        count--;
+        return result;
+    }
+    else
+    {
+        cout << "Item was not found and not deleted" << endl;
+        return result;
+    }
 }
 int main()
 {
