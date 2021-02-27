@@ -27,11 +27,19 @@ template <typename T>
 class SortedLinkedList
 {
 public:
-
+    SortedLinkedList(); // default constructor
 private:
     int count;
     Node<T>* first;
 };
+
+template <typename T>
+SortedLinkedList<T>::SortedLinkedList()
+{
+    count = 0;
+    first = NULL;
+}
+
 int main()
 {
     return 0;
