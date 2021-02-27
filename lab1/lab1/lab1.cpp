@@ -17,6 +17,12 @@ Node<T>::Node()
 {
     next = NULL;
 }
+template <typename T>
+Node<T>::Node(T item, Node* link)
+{
+    data = item;
+    next = link;
+}
 
 int main()
 {
