@@ -10,6 +10,7 @@ public:
     Node* next;
     // constructors
     Node();
+    Node(T d, Node* link = NULL);
 };
 
 int main()
