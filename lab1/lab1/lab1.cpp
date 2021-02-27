@@ -29,7 +29,7 @@ class SortedLinkedList
 public:
 
 private:
-
+    int count;
 };
 int main()
 {
