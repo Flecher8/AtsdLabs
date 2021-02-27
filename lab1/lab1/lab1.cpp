@@ -32,6 +32,7 @@ public:
     bool isEmpty();
     int ListSize();
     void addItem(T item);
+    void printList();
 private:
     int count;
     Node<T>* first;
@@ -79,6 +80,20 @@ void SortedLinkedList<T>::addItem(T item)
     else
         previous->next = new Node<T>(item, following);
     count++;
+}
+template <typename T>
+void SortedLinkedList<T>::printList()
+{
+    cout << "List content:\n";
+    if (isEmpty())
+        cout << "List is empty.\n";
+    Node<T>* following = first;
+    while (following != NULL)
+    {
+        cout << following->data << " ";
+        following = following->next;
+    }
+    cout << endl;
 }
 int main()
 {
