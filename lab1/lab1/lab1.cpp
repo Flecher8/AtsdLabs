@@ -30,6 +30,7 @@ public:
 
 private:
     int count;
+    Node<T>* first;
 };
 int main()
 {
