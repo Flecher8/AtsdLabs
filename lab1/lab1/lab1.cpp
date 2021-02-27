@@ -28,6 +28,8 @@ class SortedLinkedList
 {
 public:
     SortedLinkedList(); // default constructor
+    ~SortedLinkedList();// destructor
+
 private:
     int count;
     Node<T>* first;
@@ -39,7 +41,18 @@ SortedLinkedList<T>::SortedLinkedList()
     count = 0;
     first = NULL;
 }
-
+template <typename T>
+SortedLinkedList<T>::~SortedLinkedList()
+{
+    count = 0;
+    Node<T>* temp;
+    while (first != NULL)
+    {
+        temp = first;
+        first = first->next;
+        delete temp;
+    }
+}
 int main()
 {
     return 0;
