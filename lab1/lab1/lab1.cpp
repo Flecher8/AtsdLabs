@@ -30,6 +30,7 @@ public:
     SortedLinkedList(); // default constructor
     ~SortedLinkedList();// destructor
     bool isEmpty();
+    int ListSize();
 private:
     int count;
     Node<T>* first;
@@ -57,6 +58,11 @@ template <typename T>
 bool SortedLinkedList<T>::isEmpty()
 {
     return (count == 0);
+}
+template <typename T>
+int SortedLinkedList<T>::ListSize()
+{
+    return count;
 }
 int main()
 {
