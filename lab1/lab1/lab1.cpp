@@ -23,7 +23,14 @@ Node<T>::Node(T item, Node* link)
     data = item;
     next = link;
 }
+template <typename T>
+class SortedLinkedList
+{
+public:
 
+private:
+
+};
 int main()
 {
     return 0;
