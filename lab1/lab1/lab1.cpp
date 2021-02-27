@@ -35,6 +35,7 @@ public:
     void printList();
     T deleteItem(T item);
     bool search(T item);
+    SortedLinkedList copyDuplicate(SortedLinkedList& L2);
 private:
     int count;
     Node<T>* first;
@@ -155,6 +156,67 @@ bool SortedLinkedList<T>::search(T item)
         following = following->next;
     }
     return false;
+}
+template <typename T>
+SortedLinkedList<T> SortedLinkedList<T>::copyDuplicate(SortedLinkedList<T>& L2)
+{
+    SortedLinkedList<T> L1;
+    if (isEmpty())
+        return L1;
+    if (listSize() == 1)
+    {
+        L1.addItem(first->data);
+        L1.addItem(first->data);
+        L2.addItem(first->data);
+        return L1;
+    }
+    Node<T>* following = first;
+    while (following->next != NULL)
+    {
+        L1.addItem(following->data);
+        following = following->next;
+    }
+    L1.addItem(following->data);
+
+    Node<T>* previous = L1.first;
+    following = L1.first->next;
+    T item = L1.first->data;
+    int repite = 0;
+    while (previous->next != NULL)
+    {
+        if (following->next == NULL && previous->data != following->data)
+        {
+            following->next = new Node<T>(following->data, NULL);
+            L2.addItem(following->data);
+        }
+        if (item == following->data)
+        {
+            repite++;
+            previous = following;
+            following = following->next;
+            item = previous->data;
+        }
+        else
+        {
+            if (repite == 0)
+            {
+                previous->next = new Node<T>(previous->data, following);
+                repite++;
+                L2.addItem(previous->data);
+            }
+            else
+            {
+                repite = 0;
+                previous = following;
+                following = following->next;
+                item = previous->data;
+            }
+
+        }
+
+    }
+
+    return L1;
 }
 int main()
 {
